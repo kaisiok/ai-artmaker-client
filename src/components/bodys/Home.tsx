@@ -1,11 +1,13 @@
 import MyCard from "../MyCard";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 
+import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { selectUser, userActions } from "../../store/user";
 
 function Home(): React.ReactElement {
   const user = useAppSelector(selectUser);
+  const navigate = useNavigate();
 
   return (
     <div className="mt-14 h-[calc(100svh-56px)]">
@@ -17,7 +19,13 @@ function Home(): React.ReactElement {
           tag 혹은 문장을 이용해서 ai이미지를 만들 수 있습니다
         </div>
         <div className="md:mt-4">
-          <Button className="mr-1 md:text-xl w-36 md:mr-4" variant="primary">
+          <Button
+            className="mr-1 md:text-xl w-36 md:mr-4"
+            variant="primary"
+            onClick={() => {
+              navigate("/tagselect-style");
+            }}
+          >
             tag로 생성하기
           </Button>
           {user.isLogin ? (
@@ -43,7 +51,7 @@ function Home(): React.ReactElement {
           )}
         </div>
       </div>
-      <div className="bg-gray-lv1 h-3/4 px-10 overflow-auto flex flex-wrap justify-center md:h-3/5 md:px-24 md:grid md:grid-cols-2 lg:grid-cols-4 place-items-center">
+      <div className="bg-gray-lv1 h-3/4 px-10 overflow-auto justify-center grid grid-cols-1 md:h-3/5 md:px-24 md:grid md:grid-cols-2 lg:grid-cols-4 place-items-center">
         <MyCard parent={"home"} />
         <MyCard parent={"home"} />
         <MyCard parent={"home"} />

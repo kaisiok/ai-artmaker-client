@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/bodys/Home";
 import Signup from "./components/bodys/Signup";
 import Login from "./components/bodys/Login";
-import Tagselect from "./components/bodys/Tagselect";
+import Tagselect_style from "./components/bodys/Tagselect_style";
 import Mypage from "./components/bodys/Mypage";
 import MyPhotos from "./components/bodys/Myphotos";
 
@@ -19,7 +19,7 @@ function App() {
       <MyNavbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/tagselect" element={<Tagselect />} />
+        <Route path="/tagselect-style" element={<Tagselect_style />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
