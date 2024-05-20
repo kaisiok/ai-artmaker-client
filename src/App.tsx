@@ -25,8 +25,6 @@ function App() {
   return (
     <div className="Ap bg-gray-lv1">
       <MyNavbar />
-      {/* <SwitchTransition>
-        <CSSTransition key={location.pathname} classNames="slide" timeout={300}> */}
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
@@ -40,8 +38,6 @@ function App() {
         <Route path="/result" element={<Result />} />
         <Route path="/" element={<Home />}></Route>
       </Routes>
-      {/* </CSSTransition>
-      </SwitchTransition> */}
       <MyFooter />
     </div>
   );

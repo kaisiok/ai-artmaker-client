@@ -10,8 +10,8 @@ function Login(): React.ReactElement {
   return (
     <div className="mt-14 h-[calc(100svh-56px)]">
       <div className="bg-gray-lv2 h-full flex justify-center">
-        <div className="w-96 h-full bg-white pt-40 lg:px-20 lg:w-1/2 border-x-2 border-solid border-gray-lv3">
-          <Form className="flex flex-col mx-2">
+        <div className="w-96 h-full bg-white px-10 pt-40 lg:px-20 lg:w-1/2 border-x-2 border-solid border-gray-lv3">
+          <Form className="flex flex-col">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>ID</Form.Label>
               <div className="flex">

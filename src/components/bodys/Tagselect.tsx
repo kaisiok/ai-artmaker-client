@@ -12,8 +12,11 @@ function Tagselect(): React.ReactElement {
   return (
     <div className="mt-14 h-[calc(100svh-56px)]">
       <div className="bg-gray-lv4 h-1/4 md:h-2/5 text-center flex flex-col justify-center">
-        <div className="text-xl text-white md:text-4xl">
-          먼저 그림의 전체적인 스타일을 선택하세요
+        <div className="text-xl  text-white md:text-4xl">
+          태그를 선택해서 그림을 만들어 보세요
+        </div>
+        <div className="text-base py-2 text-gray-lv2 md:text-xl">
+          스타일, 자세, 구도, 배경을 고르면 이미지가 생성됩니다
         </div>
       </div>
       <SwitchTransition>

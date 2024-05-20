@@ -12,6 +12,12 @@ module.exports = {
         "gray-green": "#2ecc71",
       },
       backgroundImage: { samplebg: "url(/img/03.jpg)" },
+      width: {
+        "custom-w": "325px",
+      },
+      height: {
+        "custom-h": "667px",
+      },
     },
   },
   plugins: [],
