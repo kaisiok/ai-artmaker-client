@@ -34,7 +34,7 @@ function Signup(): React.ReactElement {
               <Form.Control type="password" placeholder="Password" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="formBasicPasswordck">
               <Form.Label>비밀번호 확인</Form.Label>
               <Form.Control type="password" placeholder="Password" />
             </Form.Group>

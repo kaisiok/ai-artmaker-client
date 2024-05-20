@@ -23,13 +23,19 @@ function Home(): React.ReactElement {
             className="mr-1 md:text-xl w-36 md:mr-4"
             variant="primary"
             onClick={() => {
-              navigate("/tagselect-style");
+              navigate("/tagselect/style");
             }}
           >
             tag로 생성하기
           </Button>
           {user.isLogin ? (
-            <Button className="ml-1 md:text-xl w-36 md:ml-4" variant="primary">
+            <Button
+              className="ml-1 md:text-xl w-36 md:ml-4"
+              variant="primary"
+              onClick={() => {
+                navigate("/texttoimg");
+              }}
+            >
               문장으로 생성하기
             </Button>
           ) : (
