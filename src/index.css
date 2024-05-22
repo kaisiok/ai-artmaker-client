@@ -3,3 +3,12 @@
 @tailwind utilities;
 
 @import "./animations.css";
+
+.my-tooltip > .tooltip-inner {
+  background-color: #6c757d;
+  color: white;
+  border: 1px solid #6c757d;
+}
+.my-tooltip > .tooltip-arrow {
+  color: #6c757d;
+}

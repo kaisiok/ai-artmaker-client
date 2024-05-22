@@ -18,6 +18,8 @@ import Result from "./components/bodys/Result";
 import Tagselect from "./components/bodys/Tagselect";
 import Tagselect_pose from "./components/bodys/Tagselect_pose";
 import Tagselect_style from "./components/bodys/Tagselect_style";
+import Error404 from "./components/bodys/Error404";
+import Error500 from "./components/bodys/Error500";
 
 function App() {
   const location = useLocation();
@@ -36,6 +38,8 @@ function App() {
         </Route>
         <Route path="/texttoimg" element={<Texttoimg />} />
         <Route path="/result" element={<Result />} />
+        <Route path="/404" element={<Error404 />} />
+        <Route path="/500" element={<Error500 />} />
         <Route path="/" element={<Home />}></Route>
       </Routes>
       <MyFooter />
