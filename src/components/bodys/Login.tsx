@@ -29,7 +29,8 @@ function Login(): React.ReactElement {
     try {
       const result = await axios.post(
         process.env.REACT_APP_SERVER_ADRESS + "/user/login",
-        { id: userId, password: userPassward }
+        { id: userId, password: userPassward },
+        { withCredentials: true }
       );
       if (result.status === 200) {
         dispatch(userActions.login());

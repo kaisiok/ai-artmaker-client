@@ -70,7 +70,8 @@ function Signup(): React.ReactElement {
         {
           id: userId,
           password: userPassward,
-        }
+        },
+        { withCredentials: true }
       );
       if (result.status === 200) {
         setShowModal(true);

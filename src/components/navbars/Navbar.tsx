@@ -3,13 +3,42 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
+import axios from "axios";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { selectUser, userActions } from "../../store/user";
 import { Link, useNavigate } from "react-router-dom";
 
 function MyNavbar(): React.ReactElement {
   const user = useAppSelector(selectUser);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const logoutHandle = async (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    try {
+      const result = await axios.post(
+        process.env.REACT_APP_SERVER_ADRESS + "/user/logout",
+        {},
+        { withCredentials: true }
+      );
+      if (result.status === 200) {
+        dispatch(userActions.logout());
+        dispatch(userActions.setUserId(""));
+        navigate("/");
+      }
+    } catch (err: any) {
+      if (err.response && err.response.status === 404) {
+        navigate("/404");
+      } else if (err.response && err.response.status === 406) {
+        dispatch(userActions.logout());
+        dispatch(userActions.setUserId(""));
+        navigate("/");
+      } else if (err.response && err.response.status === 500) {
+        navigate("/500");
+      } else {
+        console.log(err);
+      }
+    }
+  };
 
   return (
     <div className="fixed top-0 w-full z-10 h-14">
@@ -41,13 +70,12 @@ function MyNavbar(): React.ReactElement {
                 </Nav.Item>
               ) : null}
               {user.isLogin ? (
-                <Nav.Item className="mx-2">
-                  <Link
-                    to={"/tagselect"}
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    Logout
-                  </Link>
+                <Nav.Item
+                  className="mx-2"
+                  onClick={logoutHandle}
+                  style={{ cursor: "pointer" }}
+                >
+                  Logout
                 </Nav.Item>
               ) : null}
               {user.isLogin ? null : (
@@ -113,7 +141,7 @@ function MyNavbar(): React.ReactElement {
                 MyPage
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item>Logout</NavDropdown.Item>
+              <NavDropdown.Item onClick={logoutHandle}>Logout</NavDropdown.Item>
             </NavDropdown>
           ) : null}
         </Container>
