@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 
+import MyModal from "../MyModal";
+
 function Signup(): React.ReactElement {
   const user = useAppSelector(selectUser);
   const navigate = useNavigate();
@@ -14,6 +16,7 @@ function Signup(): React.ReactElement {
   const [checkPassward, setCheckPassword] = useState("");
   const [isCheckedId, setIsCheckedId] = useState(false);
   const [idCheckMessage, setIdCheckMessage] = useState("중복확인");
+  const [showModal, setShowModal] = useState(false);
 
   const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsCheckedId(false);
@@ -73,7 +76,7 @@ function Signup(): React.ReactElement {
         }
       );
       if (result.status === 200) {
-        //회원가입 완료 모달
+        setShowModal(true);
       }
     } catch (err: any) {
       console.log(err);
@@ -136,54 +139,31 @@ function Signup(): React.ReactElement {
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>비밀번호</Form.Label>
-              <OverlayTrigger
-                placement="bottom"
-                trigger={"focus"}
-                overlay={
-                  userPassward.length > 5 ? (
-                    <Tooltip className="my-tooltip">
-                      사용 가능한 비밀번호
-                    </Tooltip>
-                  ) : (
-                    <Tooltip className="my-tooltip">
-                      비밀번호가 너무 짧습니다
-                    </Tooltip>
-                  )
-                }
-              >
-                <Form.Control
-                  value={userPassward}
-                  onChange={handlePasswardChange}
-                  type="password"
-                  placeholder="Password"
-                />
-              </OverlayTrigger>
+              <Form.Control
+                value={userPassward}
+                onChange={handlePasswardChange}
+                type="password"
+                placeholder="Password"
+              />
+              {userPassward.length > 5 || userPassward.length === 0 ? null : (
+                <div className="text-red-600">
+                  비밀번호는 6자리 이상이어야 합니다
+                </div>
+              )}
             </Form.Group>
 
             <Form.Group className="mb-5" controlId="formBasicPasswordck">
               <Form.Label>비밀번호 확인</Form.Label>
-              <OverlayTrigger
-                placement="bottom"
-                trigger={"focus"}
-                overlay={
-                  userPassward === checkPassward ? (
-                    <Tooltip className="my-tooltip">
-                      비밀번호가 일치합니다
-                    </Tooltip>
-                  ) : (
-                    <Tooltip className="my-tooltip">
-                      비밀번호가 일치하지 않습니다
-                    </Tooltip>
-                  )
-                }
-              >
-                <Form.Control
-                  value={checkPassward}
-                  onChange={handleCheckPasswardChange}
-                  type="password"
-                  placeholder="Password"
-                />
-              </OverlayTrigger>
+              <Form.Control
+                value={checkPassward}
+                onChange={handleCheckPasswardChange}
+                type="password"
+                placeholder="Password"
+              />
+              {userPassward === checkPassward ||
+              checkPassward.length === 0 ? null : (
+                <div className="text-red-600">비밀번호가 일치하지 않습니다</div>
+              )}
             </Form.Group>
             <div className="flex justify-center">
               {canSubmit() ? (
@@ -208,6 +188,18 @@ function Signup(): React.ReactElement {
           </Form>
         </div>
       </div>
+      <MyModal
+        show={showModal}
+        handleConfirm={function (): void {
+          setShowModal(false);
+          navigate("/");
+        }}
+        handleClose={function (): void {
+          setShowModal(false);
+        }}
+        message="회원가입이 완료되었습니다"
+        messageHeader="환영합니다!"
+      />
     </div>
   );
 }
