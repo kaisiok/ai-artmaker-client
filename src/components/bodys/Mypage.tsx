@@ -23,6 +23,8 @@ function Mypage(): React.ReactElement {
     <div className="mt-14 h-[calc(100svh-56px)]">
       <div className="bg-gray-lv2 h-full flex justify-center">
         <div className="w-96 h-full bg-white pt-40 lg:px-20 lg:w-1/2 border-x-2 border-solid border-gray-lv3">
+          <div>{user.userId}님 안녕하세요</div>
+          <div>원하시는 작업을 선택해 주세요</div>
           {whatTodo === "delete" ? (
             <Form className="flex flex-col mx-2">
               <Form.Group className="mb-3" controlId="formBasicPassword">

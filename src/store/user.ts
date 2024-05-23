@@ -4,21 +4,26 @@ import { RootState } from ".";
 
 interface UserState {
   isLogin: Boolean;
+  userId: string;
 }
 
 const initialState: UserState = {
   isLogin: false,
+  userId: "",
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<any>) => {
+    login: (state) => {
       state.isLogin = true;
     },
-    logout: (state, action: PayloadAction<any>) => {
+    logout: (state) => {
       state.isLogin = false;
+    },
+    setUserId: (state, action: PayloadAction<string>) => {
+      state.userId = action.payload;
     },
   },
 });

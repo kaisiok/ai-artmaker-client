@@ -48,7 +48,7 @@ function MyFooter() {
         </button>
         <button
           onClick={() => {
-            dispatch(userActions.login(1));
+            dispatch(userActions.login());
             console.log("로그인됨");
           }}
         >
@@ -56,7 +56,7 @@ function MyFooter() {
         </button>
         <button
           onClick={() => {
-            dispatch(userActions.logout(10));
+            dispatch(userActions.logout());
             console.log("로그아웃됨");
           }}
         >

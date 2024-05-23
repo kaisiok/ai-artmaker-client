@@ -62,7 +62,7 @@ function Signup(): React.ReactElement {
     return isCheckedId && userPassward !== "" && userPassward === checkPassward;
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const result = await axios.post(
