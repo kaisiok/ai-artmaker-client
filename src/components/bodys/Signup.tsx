@@ -1,7 +1,5 @@
 import { Button, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 
-import { useAppSelector, useAppDispatch } from "../../hooks";
-import { selectUser, userActions, userSlice } from "../../store/user";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
@@ -9,7 +7,6 @@ import { useState } from "react";
 import MyModal from "../MyModal";
 
 function Signup(): React.ReactElement {
-  const user = useAppSelector(selectUser);
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [userPassward, setUserPassward] = useState("");
