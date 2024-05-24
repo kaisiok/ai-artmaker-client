@@ -1,28 +1,30 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-type myModalProps = {
-  show: boolean;
-  handleConfirm: () => void;
-  handleClose: () => void;
-  message: string;
-  messageHeader: string;
-  closeButten?: boolean;
-};
+import { useAppSelector, useAppDispatch } from ".././hooks";
+import { selectModal, modalActions } from ".././store/modal";
 
-function MyModal({
-  show,
-  handleClose,
-  handleConfirm,
-  message,
-  messageHeader,
-  closeButten,
-}: myModalProps): React.ReactElement {
-  const showCloseButten = closeButten ? true : false;
+function MyModal(): React.ReactElement {
+  const dispatch = useAppDispatch();
+  const modalState = useAppSelector(selectModal);
+
+  const handleClose = () => {
+    modalState.closeFn();
+    dispatch(modalActions.close());
+  };
+
+  const handleConfirm = () => {
+    modalState.confirmFn();
+    dispatch(modalActions.close());
+  };
+
+  const message = modalState.bodyMessage;
+  const messageHeader = modalState.headerMessage;
+  const showCloseButten = modalState.showCloseButton;
 
   return (
     <Modal
-      show={show}
+      show={modalState.isOpen}
       onHide={() => {
         handleClose();
       }}

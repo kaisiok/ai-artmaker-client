@@ -6,6 +6,9 @@ import { useState } from "react";
 
 import MyModal from "../MyModal";
 
+import { useAppSelector, useAppDispatch } from "../../hooks";
+import { selectModal, modalActions } from "../../store/modal";
+
 function Signup(): React.ReactElement {
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
@@ -13,7 +16,9 @@ function Signup(): React.ReactElement {
   const [checkPassward, setCheckPassword] = useState("");
   const [isCheckedId, setIsCheckedId] = useState(false);
   const [idCheckMessage, setIdCheckMessage] = useState("중복확인");
-  const [showModal, setShowModal] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const modalState = useAppSelector(selectModal);
 
   const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsCheckedId(false);
@@ -74,7 +79,14 @@ function Signup(): React.ReactElement {
         { withCredentials: true }
       );
       if (result.status === 200) {
-        setShowModal(true);
+        dispatch(modalActions.setHeaderMessage("환영합니다"));
+        dispatch(modalActions.setBodyMessage("회원가입이 완료 되었습니다"));
+        dispatch(
+          modalActions.setConfirmFn(() => {
+            navigate("/");
+          })
+        );
+        dispatch(modalActions.open());
       }
     } catch (err: any) {
       console.log(err);
@@ -186,18 +198,7 @@ function Signup(): React.ReactElement {
           </Form>
         </div>
       </div>
-      <MyModal
-        show={showModal}
-        handleConfirm={function (): void {
-          setShowModal(false);
-          navigate("/");
-        }}
-        handleClose={function (): void {
-          setShowModal(false);
-        }}
-        message="회원가입이 완료되었습니다"
-        messageHeader="환영합니다!"
-      />
+      <MyModal />
     </div>
   );
 }
