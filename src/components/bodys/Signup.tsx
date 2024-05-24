@@ -81,11 +81,7 @@ function Signup(): React.ReactElement {
       if (result.status === 200) {
         dispatch(modalActions.setHeaderMessage("환영합니다"));
         dispatch(modalActions.setBodyMessage("회원가입이 완료 되었습니다"));
-        dispatch(
-          modalActions.setConfirmFn(() => {
-            navigate("/");
-          })
-        );
+        dispatch(modalActions.setConfirmFn("to_home"));
         dispatch(modalActions.open());
       }
     } catch (err: any) {

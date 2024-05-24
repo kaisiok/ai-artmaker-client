@@ -1,20 +1,30 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
+import { useNavigate } from "react-router-dom";
+
 import { useAppSelector, useAppDispatch } from ".././hooks";
 import { selectModal, modalActions } from ".././store/modal";
 
 function MyModal(): React.ReactElement {
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
   const modalState = useAppSelector(selectModal);
 
   const handleClose = () => {
-    modalState.closeFn();
+    const closefn = modalState.closeFn;
+    if (closefn === "to_home") {
+      navigate("/");
+    }
     dispatch(modalActions.close());
   };
 
   const handleConfirm = () => {
-    modalState.confirmFn();
+    const confirmfn = modalState.confirmFn;
+    if (confirmfn === "to_home") {
+      navigate("/");
+    }
     dispatch(modalActions.close());
   };
 

@@ -4,8 +4,8 @@ import { RootState } from ".";
 
 interface ModalState {
   isOpen: boolean;
-  confirmFn: Function;
-  closeFn: Function;
+  confirmFn: string;
+  closeFn: string;
   bodyMessage: string;
   headerMessage: string;
   showCloseButton: boolean;
@@ -13,8 +13,8 @@ interface ModalState {
 
 const initialState: ModalState = {
   isOpen: false,
-  confirmFn: () => {},
-  closeFn: () => {},
+  confirmFn: "just_close",
+  closeFn: "just_close",
   bodyMessage: "",
   headerMessage: "",
   showCloseButton: false,
@@ -30,10 +30,10 @@ export const modalSlice = createSlice({
     close: (state) => {
       state.isOpen = false;
     },
-    setConfirmFn: (state, action: PayloadAction<Function>) => {
+    setConfirmFn: (state, action: PayloadAction<string>) => {
       state.confirmFn = action.payload;
     },
-    setCloseFn: (state, action: PayloadAction<Function>) => {
+    setCloseFn: (state, action: PayloadAction<string>) => {
       state.closeFn = action.payload;
     },
     setBodyMessage: (state, action: PayloadAction<string>) => {
