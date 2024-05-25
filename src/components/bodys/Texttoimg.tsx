@@ -1,11 +1,23 @@
+import MyModal from "../MyModal";
+import { Form, FloatingLabel, Button, Spinner } from "react-bootstrap";
+
 import { useState, useEffect } from "react";
-import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import axios from "axios";
+
+import { useAppSelector, useAppDispatch } from "../../hooks";
+import { selectUser, userActions } from "../../store/user";
+import { selectModal, modalActions } from "../../store/modal";
+import { selectImg, imgActions } from "../../store/img";
 
 function Texttoimg(): React.ReactElement {
-  const [imgStyle, setImgStyle] = useState("state1");
+  const [imgStyle, setImgStyle] = useState("black and white illustration");
   const [imgText, setImgText] = useState("");
   const [textColor, setTextColor] = useState("text-gray-500");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (imgText.length > 300) {
@@ -15,7 +27,12 @@ function Texttoimg(): React.ReactElement {
     }
   }, [imgText]);
 
-  const navigate = useNavigate();
+  const styleList = [
+    { value: "black and white illustration", label: "흑백" },
+    { value: "oil painting", label: "유화" },
+    { value: "realistic", label: "실사" },
+    { value: "bishoujo", label: "만화" },
+  ];
 
   function handleClick(e: React.MouseEvent<HTMLInputElement, MouseEvent>) {
     setImgStyle(e.currentTarget.value);
@@ -23,6 +40,39 @@ function Texttoimg(): React.ReactElement {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setImgText(e.currentTarget.value);
   }
+
+  const handleSubmit = async () => {
+    try {
+      setIsLoading(true);
+      const result = await axios.post(
+        process.env.REACT_APP_SERVER_ADRESS + "/img/texttoimg",
+        { prompt: imgText, style: imgStyle },
+        { withCredentials: true }
+      );
+      if (result.status === 200) {
+        dispatch(imgActions.change(result.data));
+        navigate("/result");
+      }
+    } catch (err: any) {
+      if (err.response && err.response.status === 401) {
+        dispatch(modalActions.setHeaderMessage("토큰이 만료되었습니다"));
+        dispatch(modalActions.setBodyMessage("다시 로그인 후 시도해 주세요"));
+        dispatch(userActions.logout());
+        dispatch(modalActions.setConfirmFn("to_home"));
+        dispatch(modalActions.open());
+      } else if (err.response && err.response.status === 404) {
+        navigate("/404");
+      } else if (err.response && err.response.status === 500) {
+        navigate("/500");
+      } else {
+        console.log(err);
+      }
+    } finally {
+      setImgStyle("black and white illustration");
+      setImgText("");
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="mt-14 h-[calc(100svh-56px)]">
@@ -44,40 +94,33 @@ function Texttoimg(): React.ReactElement {
           <div className={"flex justify-end text-xs"}>
             <div className={textColor}>{imgText.length}/300</div>
           </div>
-          <Form className="grid grid-cols-2 gap-y-1 mt-2 place-items-center lg:grid-cols-4">
-            <Form.Check
-              type="radio"
-              id="default-radio1"
-              name="group1"
-              value={"그림체1"}
-              label={"그림체1"}
-              onClick={handleClick}
-              defaultChecked
-            />
-            <Form.Check
-              type="radio"
-              id="default-radio2"
-              name="group1"
-              value={"그림체2"}
-              label={"그림체2"}
-              onClick={handleClick}
-            />
-            <Form.Check
-              type="radio"
-              id="default-radio3"
-              name="group1"
-              value={"그림체3"}
-              label={"그림체3"}
-              onClick={handleClick}
-            />
-            <Form.Check
-              type="radio"
-              id="default-radio4"
-              name="group1"
-              value={"그림체4"}
-              label={"그림체4"}
-              onClick={handleClick}
-            />
+          <Form className="grid grid-cols-2 pl-10 gap-y-1 mt-2 place-items-start lg:grid-cols-4">
+            {styleList.map((el, idx) => {
+              if (idx === 0) {
+                return (
+                  <Form.Check
+                    key={"style-radio" + String(idx)}
+                    type="radio"
+                    name="group1"
+                    value={el.value}
+                    label={el.label}
+                    onClick={handleClick}
+                    defaultChecked
+                  />
+                );
+              } else {
+                return (
+                  <Form.Check
+                    key={"style-radio" + String(idx)}
+                    type="radio"
+                    name="group1"
+                    value={el.value}
+                    label={el.label}
+                    onClick={handleClick}
+                  />
+                );
+              }
+            })}
           </Form>
           <div className="flex justify-center mt-6">
             <Button
@@ -87,24 +130,40 @@ function Texttoimg(): React.ReactElement {
                 navigate("/");
               }}
               variant="secondary"
-              type="submit"
             >
               뒤로 가기
             </Button>
-            <Button
-              className="mx-2"
-              style={{ width: "8rem" }}
-              onClick={() => {
-                navigate("/result");
-              }}
-              variant="primary"
-              type="submit"
-            >
-              submit
-            </Button>
+            {isLoading ? (
+              <Button
+                variant="primary"
+                className="mx-2"
+                style={{ width: "8rem" }}
+                disabled
+              >
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+                Loading...
+              </Button>
+            ) : (
+              <Button
+                className="mx-2"
+                style={{ width: "8rem" }}
+                onClick={handleSubmit}
+                variant="primary"
+                disabled={imgText.length === 0 || imgText.length > 300}
+              >
+                생성 하기
+              </Button>
+            )}
           </div>
         </div>
       </div>
+      <MyModal />
     </div>
   );
 }

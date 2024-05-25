@@ -6,6 +6,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import axios from "axios";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { selectUser, userActions } from "../../store/user";
+import { selectImg, imgActions } from "../../store/img";
 import { Link, useNavigate } from "react-router-dom";
 
 function MyNavbar(): React.ReactElement {
@@ -23,6 +24,7 @@ function MyNavbar(): React.ReactElement {
       if (result.status === 200) {
         dispatch(userActions.logout());
         dispatch(userActions.setUserId(""));
+        dispatch(imgActions.setDefault());
         navigate("/");
       }
     } catch (err: any) {
@@ -49,6 +51,14 @@ function MyNavbar(): React.ReactElement {
           </Link>
           <div className="hidden lg:block">
             <Nav className="ms-auto items-end">
+              <Nav.Item className="mx-2">
+                <Link
+                  to={"/result"}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  LastImg
+                </Link>
+              </Nav.Item>
               {user.isLogin ? (
                 <Nav.Item className="mx-2">
                   <Link
@@ -128,6 +138,13 @@ function MyNavbar(): React.ReactElement {
             >
               <NavDropdown.Item
                 onClick={() => {
+                  navigate("/result");
+                }}
+              >
+                LastImg
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() => {
                   navigate("/myphotos");
                 }}
               >
@@ -140,6 +157,7 @@ function MyNavbar(): React.ReactElement {
               >
                 MyPage
               </NavDropdown.Item>
+
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={logoutHandle}>Logout</NavDropdown.Item>
             </NavDropdown>

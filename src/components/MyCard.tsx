@@ -19,6 +19,9 @@ function MyCard({ className, parent }: myCardProps): React.ReactElement {
                 navigate("/tagselect/pose");
               }}
               variant="secondary"
+              style={{
+                padding: "5px",
+              }}
             >
               이미지 만들기
             </Button>

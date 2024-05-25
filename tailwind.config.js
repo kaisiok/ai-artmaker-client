@@ -11,7 +11,7 @@ module.exports = {
         "gray-blue": "#3498db",
         "gray-green": "#2ecc71",
       },
-      backgroundImage: { samplebg: "url(/img/03.jpg)" },
+      backgroundImage: { samplebg: "url(/src/img/03.jpg)" },
       width: {
         "custom-w": "325px",
       },
