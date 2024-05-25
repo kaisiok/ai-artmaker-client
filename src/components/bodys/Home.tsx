@@ -20,7 +20,7 @@ function Home(): React.ReactElement {
         </div>
         <div className="md:mt-4">
           <Button
-            className="mr-1 md:text-xl w-36 md:mr-4"
+            className="mr-1 md:text-xl w-40 md:mr-4"
             variant="primary"
             onClick={() => {
               navigate("/tagselect/style");
@@ -30,7 +30,7 @@ function Home(): React.ReactElement {
           </Button>
           {user.isLogin ? (
             <Button
-              className="ml-1 md:text-xl w-36 md:ml-4"
+              className="ml-1 md:text-xl w-40 md:ml-4"
               variant="primary"
               onClick={() => {
                 navigate("/texttoimg");
@@ -48,7 +48,7 @@ function Home(): React.ReactElement {
               }
             >
               <Button
-                className="ml-1 md:text-xl w-36 md:ml-4"
+                className="ml-1 md:text-xl w-40 md:ml-4"
                 variant="secondary"
               >
                 문장으로 생성하기
