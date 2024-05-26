@@ -31,7 +31,7 @@ function Texttoimg(): React.ReactElement {
     { value: "black and white illustration", label: "흑백" },
     { value: "oil painting", label: "유화" },
     { value: "realistic", label: "실사" },
-    { value: "bishoujo", label: "만화" },
+    { value: "bishoujo", label: "레트로" },
   ];
 
   function handleClick(e: React.MouseEvent<HTMLInputElement, MouseEvent>) {

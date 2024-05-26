@@ -120,7 +120,7 @@ function MyPhotos(): React.ReactElement {
           return (
             <div
               key={el.id}
-              className="w-48 h-96 relative rounded overflow-hidden"
+              className="w-48 h-96 my-2 relative rounded overflow-hidden"
             >
               <img
                 className="h-full"
@@ -164,7 +164,7 @@ function MyPhotos(): React.ReactElement {
           return (
             <div
               key={"dummy" + idx}
-              className="w-48 h-96 border-dashed border-2 border-gray-600 rounded flex items-center justify-center relative"
+              className="w-48 h-96 my-2 border-dashed border-2 border-gray-600 rounded flex items-center justify-center relative"
             >
               <div className="text-center">
                 <svg
