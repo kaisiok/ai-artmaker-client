@@ -16,8 +16,6 @@ import MyPhotos from "./components/bodys/Myphotos";
 import Texttoimg from "./components/bodys/Texttoimg";
 import Result from "./components/bodys/Result";
 import Tagselect from "./components/bodys/Tagselect";
-import Tagselect_pose from "./components/bodys/Tagselect_pose";
-import Tagselect_style from "./components/bodys/Tagselect_style";
 import Error404 from "./components/bodys/Error404";
 import Error500 from "./components/bodys/Error500";
 
@@ -32,10 +30,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/myphotos" element={<MyPhotos />} />
-        <Route path="/tagselect" element={<Tagselect />}>
-          <Route path="/tagselect/pose" element={<Tagselect_pose />} />
-          <Route path="/tagselect/style" element={<Tagselect_style />} />
-        </Route>
+        <Route path="/tagselect" element={<Tagselect />} />
         <Route path="/texttoimg" element={<Texttoimg />} />
         <Route path="/result" element={<Result />} />
         <Route path="/404" element={<Error404 />} />

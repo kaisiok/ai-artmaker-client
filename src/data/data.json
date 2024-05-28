@@ -1,0 +1,56 @@
+{
+  "style": [
+    { "src": "tag_style_blackwhite.png", "code": "001" },
+    { "src": "tag_style_oilpaint.png", "code": "002" },
+    { "src": "tag_style_realphoto.png", "code": "003" },
+    { "src": "tag_style_retro.png", "code": "004" }
+  ],
+  "target": [
+    { "src": "tag_target_bg.png", "code": "005" },
+    { "src": "tag_target_girl.png", "code": "006" },
+    { "src": "tag_target_guy.png", "code": "007" },
+    { "src": "tag_target_animal.png", "code": "008" }
+  ],
+  "girl_pose": [
+    { "src": "tag_girl_lookingviewer.png", "code": "009" },
+    { "src": "tag_girl_lookingback.png", "code": "010" },
+    { "src": "tag_girl_from side.png", "code": "011" },
+    { "src": "tag_girl_sitting.png", "code": "012" }
+  ],
+  "guy_pose": [
+    { "src": "tag_guy_lookingatviewer.png", "code": "013" },
+    { "src": "tag_guy_lookingback.png", "code": "014" },
+    { "src": "tag_guy_fromside.png", "code": "015" },
+    { "src": "tag_guy_sittng.png", "code": "016" }
+  ],
+  "girl_face": [
+    { "src": "tag_girl_smile.png", "code": "017" },
+    { "src": "tag_girl_serious.png", "code": "018" },
+    { "src": "tag_girl_angry.png", "code": "019" },
+    { "src": "tag_girl_tears.png", "code": "020" }
+  ],
+  "guy_face": [
+    { "src": "tag_guy_smile.png", "code": "021" },
+    { "src": "tag_guy_serious.png", "code": "022" },
+    { "src": "tag_guy_angry.png", "code": "023" },
+    { "src": "tag_guy_crying.png", "code": "024" }
+  ],
+  "time": [
+    { "src": "tag_time_morning.png", "code": "025" },
+    { "src": "tag_time_noon.png", "code": "026" },
+    { "src": "tag_time_sunset.png", "code": "027" },
+    { "src": "tag_time_night.png", "code": "028" }
+  ],
+  "background": [
+    { "src": "tag_bg_beach.png", "code": "029" },
+    { "src": "tag_bg_lake.png", "code": "030" },
+    { "src": "tag_bg_mountain.png", "code": "031" },
+    { "src": "tag_bg_city.png", "code": "032" }
+  ],
+  "animal": [
+    { "src": "tag_ainmals_dog.png", "code": "033" },
+    { "src": "tag_animals_cat.png", "code": "034" },
+    { "src": "tag_animals_eagle.png", "code": "035" },
+    { "src": "tag_animals_tiger.png", "code": "036" }
+  ]
+}

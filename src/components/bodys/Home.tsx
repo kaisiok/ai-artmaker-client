@@ -1,5 +1,6 @@
 import MyCard from "../MyCard";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import Mydata from "../../data/data.json";
 
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../hooks";
@@ -23,7 +24,7 @@ function Home(): React.ReactElement {
             className="mr-1 md:text-xl w-40 md:mr-4"
             variant="primary"
             onClick={() => {
-              navigate("/tagselect/style");
+              navigate("/tagselect");
             }}
           >
             tag로 생성하기
@@ -58,10 +59,11 @@ function Home(): React.ReactElement {
         </div>
       </div>
       <div className="bg-gray-lv1 h-3/4 px-10 overflow-auto justify-center grid grid-cols-1 md:h-3/5 md:px-24 md:grid md:grid-cols-2 lg:grid-cols-4 place-items-center">
-        <MyCard parent={"home"} />
-        <MyCard parent={"home"} />
-        <MyCard parent={"home"} />
-        <MyCard parent={"home"} />
+        {/* {Mydata.style.map((el) => {
+          return (
+            <MyCard src={el.src} key={el.code} parent={"home"} code={el.code} />
+          );
+        })} */}
       </div>
     </div>
   );
