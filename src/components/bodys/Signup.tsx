@@ -49,7 +49,7 @@ function Signup(): React.ReactElement {
     }
   };
   const checkIdValid = (id: string): boolean => {
-    const pattern = /^[a-zA-Z0-9@]+$/;
+    const pattern = /^[a-zA-Z0-9@.]+$/;
     return pattern.test(id) && id.length > 4;
   };
 
