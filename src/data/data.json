@@ -1,56 +1,92 @@
 {
   "style": [
-    { "src": "tag_style_blackwhite.png", "code": "001" },
-    { "src": "tag_style_oilpaint.png", "code": "002" },
-    { "src": "tag_style_realphoto.png", "code": "003" },
-    { "src": "tag_style_retro.png", "code": "004" }
+    {
+      "src": "tag_style_charcoal.png",
+      "code": "001",
+      "explanation": "목탄 그림"
+    },
+    {
+      "src": "tag_style_impressionism.png",
+      "code": "002",
+      "explanation": "인상파 유화"
+    },
+    {
+      "src": "tag_style_comic.png",
+      "code": "003",
+      "explanation": "코믹북 아트"
+    },
+    { "src": "tag_style_ink.png", "code": "004", "explanation": "잉크 그림" }
   ],
   "target": [
-    { "src": "tag_target_bg.png", "code": "005" },
-    { "src": "tag_target_girl.png", "code": "006" },
-    { "src": "tag_target_guy.png", "code": "007" },
-    { "src": "tag_target_animal.png", "code": "008" }
+    { "src": "tag_target_bg.png", "code": "005", "explanation": "자연 경관" },
+    { "src": "tag_target_girl.png", "code": "006", "explanation": "여자" },
+    { "src": "tag_target_guy.png", "code": "007", "explanation": "남자" },
+    { "src": "tag_target_animal.png", "code": "008", "explanation": "동물" }
   ],
   "girl_pose": [
-    { "src": "tag_girl_lookingviewer.png", "code": "009" },
-    { "src": "tag_girl_lookingback.png", "code": "010" },
-    { "src": "tag_girl_from side.png", "code": "011" },
-    { "src": "tag_girl_sitting.png", "code": "012" }
+    {
+      "src": "tag_girl_lookingviewer.png",
+      "code": "009",
+      "explanation": "정면"
+    },
+    {
+      "src": "tag_girl_lookingback.png",
+      "code": "010",
+      "explanation": "뒷모습"
+    },
+    { "src": "tag_girl_from side.png", "code": "011", "explanation": "옆모습" },
+    { "src": "tag_girl_sitting.png", "code": "012", "explanation": "앉아있는" }
   ],
   "guy_pose": [
-    { "src": "tag_guy_lookingatviewer.png", "code": "013" },
-    { "src": "tag_guy_lookingback.png", "code": "014" },
-    { "src": "tag_guy_fromside.png", "code": "015" },
-    { "src": "tag_guy_sittng.png", "code": "016" }
+    {
+      "src": "tag_guy_lookingatviewer.png",
+      "code": "013",
+      "explanation": "정면"
+    },
+    {
+      "src": "tag_guy_lookingback.png",
+      "code": "014",
+      "explanation": "뒷모습"
+    },
+    { "src": "tag_guy_fromside.png", "code": "015", "explanation": "옆모습" },
+    { "src": "tag_guy_sittng.png", "code": "016", "explanation": "앉아있는" }
   ],
   "girl_face": [
-    { "src": "tag_girl_smile.png", "code": "017" },
-    { "src": "tag_girl_serious.png", "code": "018" },
-    { "src": "tag_girl_angry.png", "code": "019" },
-    { "src": "tag_girl_tears.png", "code": "020" }
+    { "src": "tag_girl_smile.png", "code": "017", "explanation": "웃는 표정" },
+    {
+      "src": "tag_girl_serious.png",
+      "code": "018",
+      "explanation": "진지한 표정"
+    },
+    { "src": "tag_girl_angry.png", "code": "019", "explanation": "화난 표정" },
+    { "src": "tag_girl_tears.png", "code": "020", "explanation": "우는 표정" }
   ],
   "guy_face": [
-    { "src": "tag_guy_smile.png", "code": "021" },
-    { "src": "tag_guy_serious.png", "code": "022" },
-    { "src": "tag_guy_angry.png", "code": "023" },
-    { "src": "tag_guy_crying.png", "code": "024" }
+    { "src": "tag_guy_smile.png", "code": "021", "explanation": "웃는 표정" },
+    {
+      "src": "tag_guy_serious.png",
+      "code": "022",
+      "explanation": "진지한 표정"
+    },
+    { "src": "tag_guy_angry.png", "code": "023", "explanation": "화난 표정" },
+    { "src": "tag_guy_crying.png", "code": "024", "explanation": "우는 표정" }
   ],
   "time": [
-    { "src": "tag_time_morning.png", "code": "025" },
-    { "src": "tag_time_noon.png", "code": "026" },
-    { "src": "tag_time_sunset.png", "code": "027" },
-    { "src": "tag_time_night.png", "code": "028" }
+    { "src": "tag_time_morning.png", "code": "025", "explanation": "아침" },
+    { "src": "tag_time_noon.png", "code": "026", "explanation": "정오" },
+    { "src": "tag_time_sunset.png", "code": "027", "explanation": "저녁" },
+    { "src": "tag_time_night.png", "code": "028", "explanation": "밤" }
   ],
   "background": [
-    { "src": "tag_bg_beach.png", "code": "029" },
-    { "src": "tag_bg_lake.png", "code": "030" },
-    { "src": "tag_bg_mountain.png", "code": "031" },
-    { "src": "tag_bg_city.png", "code": "032" }
+    { "src": "tag_bg_beach.png", "code": "029", "explanation": "바닷가" },
+    { "src": "tag_bg_lake.png", "code": "030", "explanation": "호수" },
+    { "src": "tag_bg_mountain.png", "code": "031", "explanation": "산" },
+    { "src": "tag_bg_city.png", "code": "032", "explanation": "도시" }
   ],
   "animal": [
-    { "src": "tag_ainmals_dog.png", "code": "033" },
-    { "src": "tag_animals_cat.png", "code": "034" },
-    { "src": "tag_animals_eagle.png", "code": "035" },
-    { "src": "tag_animals_tiger.png", "code": "036" }
+    { "src": "tag_ainmals_dog.png", "code": "033", "explanation": "개" },
+    { "src": "tag_animals_cat.png", "code": "034", "explanation": "고양이" },
+    { "src": "tag_animals_eagle.png", "code": "035", "explanation": "독수리" },
+    { "src": "tag_animals_tiger.png", "code": "036", "explanation": "호랑이" }
   ]
 }

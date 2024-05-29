@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/Button";
+import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import MyModal from "./MyModal";
 
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,8 @@ type myCardProps = {
   tagChange: Function;
   option: string;
   setOption: Function;
+  explanation: string;
+  lodingHandler: Function;
 };
 
 function MyCard({
@@ -24,6 +26,8 @@ function MyCard({
   tagChange,
   option,
   setOption,
+  explanation,
+  lodingHandler,
 }: myCardProps): React.ReactElement {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -53,9 +57,7 @@ function MyCard({
         : 9;
 
     if (navigateOption === 9) {
-      console.log(option + "/" + code);
-      //axios
-      //navigate
+      lodingHandler(true);
       try {
         const result = await axios.post(
           process.env.REACT_APP_SERVER_ADRESS + "/img/tagtoimg",
@@ -82,6 +84,7 @@ function MyCard({
           console.log(err);
         }
       } finally {
+        lodingHandler(false);
         setOption("");
         tagChange(0);
       }
@@ -93,10 +96,15 @@ function MyCard({
 
   return (
     <div className="w-48 h-96 my-2 relative rounded overflow-hidden">
-      <img
-        className="h-full"
-        src={process.env.REACT_APP_SERVER_ADRESS + "/img/" + src}
-      />
+      <OverlayTrigger
+        placement="top"
+        overlay={<Tooltip id="button-tooltip">{explanation}</Tooltip>}
+      >
+        <img
+          className="h-full"
+          src={process.env.REACT_APP_SERVER_ADRESS + "/img/" + src}
+        />
+      </OverlayTrigger>
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-3">
         <Button
           onClick={handleClick}
@@ -107,7 +115,7 @@ function MyCard({
             height: "2.5rem",
           }}
         >
-          이미지 만들기
+          태그 선택
         </Button>
       </div>
       <MyModal />

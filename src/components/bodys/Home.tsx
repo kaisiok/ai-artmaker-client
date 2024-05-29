@@ -59,11 +59,16 @@ function Home(): React.ReactElement {
         </div>
       </div>
       <div className="bg-gray-lv1 h-3/4 px-10 overflow-auto justify-center grid grid-cols-1 md:h-3/5 md:px-24 md:grid md:grid-cols-2 lg:grid-cols-4 place-items-center">
-        {/* {Mydata.style.map((el) => {
+        {Mydata.style.map((el) => {
           return (
-            <MyCard src={el.src} key={el.code} parent={"home"} code={el.code} />
+            <div className="w-48 h-96 my-2 relative rounded overflow-hidden">
+              <img
+                className="h-full"
+                src={process.env.REACT_APP_SERVER_ADRESS + "/img/" + el.src}
+              />
+            </div>
           );
-        })} */}
+        })}
       </div>
     </div>
   );
