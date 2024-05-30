@@ -38,7 +38,6 @@ function Login(): React.ReactElement {
         setUserId("");
         setUserPassward("");
         navigate("/");
-        console.log(result.data.username);
       }
     } catch (err: any) {
       if (err.response && err.response.status === 404) {

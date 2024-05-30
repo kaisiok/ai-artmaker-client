@@ -4,11 +4,11 @@ import userReducer from "./user";
 import modalReducer from "./modal";
 import imgReducer from "./img";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import storageSession from "redux-persist/lib/storage/session";
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage: storageSession,
 };
 
 const persistedUserReducer = persistReducer(persistConfig, userReducer);
@@ -21,6 +21,10 @@ const store = configureStore({
     modal: modalReducer,
     img: persistedImgReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 const persistor = persistStore(store);

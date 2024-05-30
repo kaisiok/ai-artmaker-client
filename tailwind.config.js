@@ -19,6 +19,11 @@ module.exports = {
         "custom-h": "667px",
       },
     },
+    fontFamily: {
+      LogoFont: ["LogoFont"],
+      Main: ["SOYOMaple"],
+      MainBold: ["SOYOMapleBold"],
+    },
   },
   plugins: [],
 };

@@ -8,10 +8,10 @@ function MyFooter() {
   return (
     <footer className="bg-gray-800 text-white py-4">
       <div className="container mx-auto text-center">
-        <h1 className="text-xl font-bold mb-2">My Project</h1>
-        <p className="text-sm mb-2">© 2024 My Project. All rights reserved.</p>
+        <h1 className="text-xl font-bold mb-2">Wallmaker</h1>
+        <p>&copy;2010-2011 Fontspring. All rights reserved.</p>
         <nav className="mb-2">
-          <a href="/home" className="text-gray-400 hover:text-white mx-2">
+          <a href="/" className="text-gray-400 hover:text-white mx-2">
             Home
           </a>
           <a href="/about" className="text-gray-400 hover:text-white mx-2">
@@ -38,30 +38,7 @@ function MyFooter() {
           >
             LinkedIn
           </a>
-        </div>{" "}
-        <button
-          onClick={() => {
-            console.log(user.isLogin);
-          }}
-        >
-          로그인했냐
-        </button>
-        <button
-          onClick={() => {
-            dispatch(userActions.login());
-            console.log("로그인됨");
-          }}
-        >
-          로그인
-        </button>
-        <button
-          onClick={() => {
-            dispatch(userActions.logout());
-            console.log("로그아웃됨");
-          }}
-        >
-          로그아웃
-        </button>
+        </div>
       </div>
     </footer>
   );

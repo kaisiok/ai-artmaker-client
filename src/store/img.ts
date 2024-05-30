@@ -8,7 +8,7 @@ interface ImgState {
 }
 
 const initialState: ImgState = {
-  img: defaultimg,
+  img: "defaultimg",
 };
 
 export const imgSlice = createSlice({
@@ -19,7 +19,7 @@ export const imgSlice = createSlice({
       state.img = action.payload;
     },
     setDefault: (state) => {
-      state.img = defaultimg;
+      state.img = "defaultimg";
     },
   },
 });

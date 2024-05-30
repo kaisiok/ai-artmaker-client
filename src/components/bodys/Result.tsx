@@ -71,12 +71,40 @@ function Result(): React.ReactElement {
   return (
     <div className="mt-14 h-[calc(100svh-56px)]">
       <div className="bg-gray-lv2 h-full flex justify-center">
-        <div className="w-96 h-full bg-white pt-8 lg:w-1/2 border-x-2 border-solid border-gray-lv3 ">
-          <img
-            id="ai-img"
-            src={imgSrc}
-            className={"h-custom-h w-custom-w mx-auto rounded overflow-hidden"}
-          />
+        <div className="w-96 h-full bg-white pt-8 lg:w-1/2 border-x-2 border-solid border-gray-lv3">
+          {imgSrc === "defaultimg" ? (
+            <div className="w-full flex justify-center">
+              <div className="w-custom-w h-custom-h my-2 border-dashed border-2 border-gray-600 rounded flex items-center justify-center relative">
+                <div className="text-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12 mx-auto mb-2 text-gray-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                  <p className="absolute w-full bottom-0 left-1/2 -translate-x-1/2 mb-8 text-gray-600">
+                    이미지를 만들어 보세요
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <img
+              id="ai-img"
+              src={imgSrc}
+              className={
+                "h-custom-h w-custom-w mx-auto rounded overflow-hidden"
+              }
+            />
+          )}
           <div id="button-wrappe1" className="h-10 flex justify-center mt-3">
             <Button
               className="mx-2"

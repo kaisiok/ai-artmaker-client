@@ -23,7 +23,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="Ap bg-gray-lv1">
+    <div className="Ap bg-gray-lv1 font-Main">
       <MyNavbar />
       <Routes>
         <Route path="/signup" element={<Signup />} />

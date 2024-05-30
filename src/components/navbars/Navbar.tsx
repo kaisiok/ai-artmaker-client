@@ -47,7 +47,7 @@ function MyNavbar(): React.ReactElement {
       <Navbar expand="lg" className="bg-gray-lv1 h-14">
         <Container>
           <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
-            <Navbar.Brand>React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand className="font-LogoFont">Wallmaker</Navbar.Brand>
           </Link>
           <div className="hidden lg:block">
             <Nav className="ms-auto items-end">
@@ -113,6 +113,13 @@ function MyNavbar(): React.ReactElement {
               className="lg:hidden"
               align={"end"}
             >
+              <NavDropdown.Item
+                onClick={() => {
+                  navigate("/result");
+                }}
+              >
+                LastImg
+              </NavDropdown.Item>
               <NavDropdown.Item
                 onClick={() => {
                   navigate("/login");
