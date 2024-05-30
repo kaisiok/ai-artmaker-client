@@ -1,4 +1,4 @@
-import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import MyModal from "../MyModal";
 
 import { useEffect, useState } from "react";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { selectUser, userActions } from "../../store/user";
-import { selectModal, modalActions } from "../../store/modal";
+import { modalActions } from "../../store/modal";
 
 function MyPhotos(): React.ReactElement {
   const [userImgs, setUserImgs] = useState([]);

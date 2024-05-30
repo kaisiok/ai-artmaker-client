@@ -8,7 +8,7 @@ import { useState } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { selectUser, userActions } from "../../store/user";
-import { selectModal, modalActions } from "../../store/modal";
+import { modalActions } from "../../store/modal";
 
 function Mypage(): React.ReactElement {
   const [whatTodo, setWhatTodo] = useState("nothing");

@@ -1,8 +1,5 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { Routes, Route } from "react-router-dom";
 
-import Counter from "./components/Counter";
-import OutlineTypesExample from "./components/button";
 import MyNavbar from "./components/navbars/Navbar";
 import MyFooter from "./components/footers/Myfooter";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,8 +17,6 @@ import Error404 from "./components/bodys/Error404";
 import Error500 from "./components/bodys/Error500";
 
 function App() {
-  const location = useLocation();
-
   return (
     <div className="Ap bg-gray-lv1 font-Main">
       <MyNavbar />

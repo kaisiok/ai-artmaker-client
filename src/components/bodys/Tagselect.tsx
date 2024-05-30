@@ -1,12 +1,10 @@
 import MyCard from "../MyCard";
 import Mydata from "../../data/data.json";
-import { Spinner, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { useAppSelector, useAppDispatch } from "../../hooks";
-import { selectUser, userActions } from "../../store/user";
 
 type Tagprops = {
   tag: string;

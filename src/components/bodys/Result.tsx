@@ -6,8 +6,8 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { selectUser, userActions } from "../../store/user";
-import { selectImg, imgActions } from "../../store/img";
-import { selectModal, modalActions } from "../../store/modal";
+import { selectImg } from "../../store/img";
+import { modalActions } from "../../store/modal";
 
 function Result(): React.ReactElement {
   const [isSaved, setIsSaved] = useState(false);

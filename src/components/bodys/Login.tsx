@@ -4,8 +4,8 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useAppSelector, useAppDispatch } from "../../hooks";
-import { selectUser, userActions } from "../../store/user";
+import { useAppDispatch } from "../../hooks";
+import { userActions } from "../../store/user";
 
 function Login(): React.ReactElement {
   const [userId, setUserId] = useState("");

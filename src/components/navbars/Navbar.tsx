@@ -6,7 +6,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import axios from "axios";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { selectUser, userActions } from "../../store/user";
-import { selectImg, imgActions } from "../../store/img";
+import { imgActions } from "../../store/img";
 import { Link, useNavigate } from "react-router-dom";
 
 function MyNavbar(): React.ReactElement {

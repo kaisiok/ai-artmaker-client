@@ -4,9 +4,9 @@ import MyModal from "./MyModal";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { useAppSelector, useAppDispatch } from "../hooks";
-import { selectModal, modalActions } from "../store/modal";
-import { selectImg, imgActions } from "../store/img";
+import { useAppDispatch } from "../hooks";
+import { modalActions } from "../store/modal";
+import { imgActions } from "../store/img";
 
 type myCardProps = {
   parent: string;

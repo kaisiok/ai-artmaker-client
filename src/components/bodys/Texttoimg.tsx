@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
-import { useAppSelector, useAppDispatch } from "../../hooks";
-import { selectUser, userActions } from "../../store/user";
-import { selectModal, modalActions } from "../../store/modal";
-import { selectImg, imgActions } from "../../store/img";
+import { useAppDispatch } from "../../hooks";
+import { userActions } from "../../store/user";
+import { modalActions } from "../../store/modal";
+import { imgActions } from "../../store/img";
 
 function Texttoimg(): React.ReactElement {
   const [imgStyle, setImgStyle] = useState("black and white illustration");

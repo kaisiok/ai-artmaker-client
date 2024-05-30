@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./counter";
 import userReducer from "./user";
 import modalReducer from "./modal";
 import imgReducer from "./img";
@@ -16,7 +15,6 @@ const persistedImgReducer = persistReducer(persistConfig, imgReducer);
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer,
     user: persistedUserReducer,
     modal: modalReducer,
     img: persistedImgReducer,

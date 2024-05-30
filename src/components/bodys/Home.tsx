@@ -1,4 +1,3 @@
-import MyCard from "../MyCard";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Mydata from "../../data/data.json";
 

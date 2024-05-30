@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import defaultimg from "../img/03.jpg";
 
 interface ImgState {
   img: string;

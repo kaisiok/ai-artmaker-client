@@ -1,10 +1,4 @@
-import { useAppSelector, useAppDispatch } from "../../hooks";
-import { selectUser, userActions } from "../../store/user";
-
 function MyFooter() {
-  const user = useAppSelector(selectUser);
-  const dispatch = useAppDispatch();
-
   return (
     <footer className="bg-gray-800 text-white py-4">
       <div className="container mx-auto text-center">
