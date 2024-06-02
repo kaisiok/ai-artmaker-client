@@ -5,6 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 
 import MyModal from "../MyModal";
+import NaverLoginButton from "../NaverLoginButton";
 
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { selectModal, modalActions } from "../../store/modal";
@@ -172,9 +173,11 @@ function Signup(): React.ReactElement {
               )}
             </Form.Group>
             <div className="flex justify-center">
+              <NaverLoginButton />
               {canSubmit() ? (
                 <Button
                   style={{ width: "8rem" }}
+                  className="mx-2"
                   variant="primary"
                   type="submit"
                 >
@@ -183,6 +186,7 @@ function Signup(): React.ReactElement {
               ) : (
                 <Button
                   style={{ width: "8rem" }}
+                  className="mx-2"
                   variant="secondary"
                   type="submit"
                   disabled={true}

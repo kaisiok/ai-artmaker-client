@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import NaverLoginButton from "../NaverLoginButton";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -63,6 +64,19 @@ function Login(): React.ReactElement {
     }
   };
 
+  const handleOauthNaver = async () => {
+    try {
+      const result = await axios.get(
+        process.env.REACT_APP_SERVER_ADRESS + "/user/login/oauthnaver"
+      );
+      if (result.data.authUrl) {
+        window.location.href = result.data.authUrl; // 클라이언트에서 네이버 로그인 페이지로 리디렉션
+      }
+    } catch (err: any) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="mt-14 h-[calc(100svh-56px)]">
       <div className="bg-gray-lv2 h-full flex justify-center">
@@ -91,9 +105,11 @@ function Login(): React.ReactElement {
               />
             </Form.Group>
             <div className="flex justify-center">
+              <NaverLoginButton />
               {userId.length > 0 && userPassward.length > 0 ? (
                 <Button
                   style={{ width: "8rem" }}
+                  className="mx-2"
                   variant="primary"
                   type="submit"
                 >
@@ -102,6 +118,7 @@ function Login(): React.ReactElement {
               ) : (
                 <Button
                   style={{ width: "8rem" }}
+                  className="mx-2"
                   variant="primary"
                   type="submit"
                   disabled
