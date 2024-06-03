@@ -17,7 +17,8 @@ function Oauth_naver(): React.ReactElement {
         const result = await axios.get(
           process.env.REACT_APP_SERVER_ADRESS +
             "/user/login/navercallback" +
-            query
+            query,
+          { withCredentials: true }
         );
         if (result.status === 200) {
           dispatch(userActions.login());
