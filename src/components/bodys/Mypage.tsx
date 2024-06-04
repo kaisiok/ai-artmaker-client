@@ -1,9 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import MyModal from "../MyModal";
+import api from "../Api";
 
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useState } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../hooks";
@@ -47,13 +47,9 @@ function Mypage(): React.ReactElement {
   ) => {
     e.preventDefault();
     try {
-      const result = await axios.delete(
-        process.env.REACT_APP_SERVER_ADRESS + "/user/delete/userinfo",
-        {
-          data: { password: userPassword },
-          withCredentials: true,
-        }
-      );
+      const result = await api.delete("/user/delete/userinfo", {
+        data: { password: userPassword },
+      });
       if (result.status === 200) {
         dispatch(modalActions.setHeaderMessage("안녕히 가세요"));
         dispatch(modalActions.setBodyMessage("회원탈퇴가 완료 되었습니다"));
@@ -89,11 +85,10 @@ function Mypage(): React.ReactElement {
   ) => {
     e.preventDefault();
     try {
-      const result = await axios.put(
-        process.env.REACT_APP_SERVER_ADRESS + "/user/change/password",
-        { lastPassword: userPassword, newPassword: newPassword },
-        { withCredentials: true }
-      );
+      const result = await api.put("/user/change/password", {
+        lastPassword: userPassword,
+        newPassword: newPassword,
+      });
       if (result.status === 200) {
         dispatch(modalActions.setHeaderMessage("변경 완료"));
         dispatch(modalActions.setBodyMessage("비밀번호가 변경 되었습니다"));

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
-
-import axios from "axios";
+import api from "../Api";
 
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
@@ -14,12 +13,7 @@ function Oauth_naver(): React.ReactElement {
   useEffect(() => {
     const oauthLoginFn = async () => {
       try {
-        const result = await axios.get(
-          process.env.REACT_APP_SERVER_ADRESS +
-            "/user/login/navercallback" +
-            query,
-          { withCredentials: true }
-        );
+        const result = await api.get("/user/login/navercallback" + query);
         if (result.status === 200) {
           dispatch(userActions.login());
           dispatch(userActions.setUserId(result.data.username));

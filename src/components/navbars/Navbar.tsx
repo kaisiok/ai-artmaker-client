@@ -2,8 +2,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import api from "../Api";
 
-import axios from "axios";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { selectUser, userActions } from "../../store/user";
 import { imgActions } from "../../store/img";
@@ -16,11 +16,7 @@ function MyNavbar(): React.ReactElement {
 
   const logoutHandle = async (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     try {
-      const result = await axios.post(
-        process.env.REACT_APP_SERVER_ADRESS + "/user/logout",
-        {},
-        { withCredentials: true }
-      );
+      const result = await api.post("/user/logout", {});
       if (result.status === 200) {
         dispatch(userActions.logout());
         dispatch(userActions.setUserId(""));

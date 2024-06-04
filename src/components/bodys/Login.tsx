@@ -4,9 +4,9 @@ import NaverLoginButton from "../NaverLoginButton";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useAppDispatch } from "../../hooks";
 import { userActions } from "../../store/user";
+import api from "../Api";
 
 function Login(): React.ReactElement {
   const [userId, setUserId] = useState("");
@@ -28,11 +28,10 @@ function Login(): React.ReactElement {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const result = await axios.post(
-        process.env.REACT_APP_SERVER_ADRESS + "/user/login",
-        { id: userId, password: userPassward },
-        { withCredentials: true }
-      );
+      const result = await api.post("/user/login", {
+        id: userId,
+        password: userPassward,
+      });
       if (result.status === 200) {
         dispatch(userActions.login());
         dispatch(userActions.setUserId(result.data.username));
@@ -61,19 +60,6 @@ function Login(): React.ReactElement {
       } else {
         console.log(err);
       }
-    }
-  };
-
-  const handleOauthNaver = async () => {
-    try {
-      const result = await axios.get(
-        process.env.REACT_APP_SERVER_ADRESS + "/user/login/oauthnaver"
-      );
-      if (result.data.authUrl) {
-        window.location.href = result.data.authUrl; // 클라이언트에서 네이버 로그인 페이지로 리디렉션
-      }
-    } catch (err: any) {
-      console.log(err);
     }
   };
 

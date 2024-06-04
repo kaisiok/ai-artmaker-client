@@ -1,9 +1,9 @@
 import MyModal from "../MyModal";
 import { Form, FloatingLabel, Button, Spinner } from "react-bootstrap";
+import api from "../Api";
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import axios from "axios";
 
 import { useAppDispatch } from "../../hooks";
 import { userActions } from "../../store/user";
@@ -44,11 +44,10 @@ function Texttoimg(): React.ReactElement {
   const handleSubmit = async () => {
     try {
       setIsLoading(true);
-      const result = await axios.post(
-        process.env.REACT_APP_SERVER_ADRESS + "/img/texttoimg",
-        { prompt: imgText, style: imgStyle },
-        { withCredentials: true }
-      );
+      const result = await api.post("/img/texttoimg", {
+        prompt: imgText,
+        style: imgStyle,
+      });
       if (result.status === 200) {
         dispatch(imgActions.change(result.data));
         navigate("/result");

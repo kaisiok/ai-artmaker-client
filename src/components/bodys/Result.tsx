@@ -1,8 +1,8 @@
 import { Button, OverlayTrigger, Tooltip, Spinner } from "react-bootstrap";
 import MyModal from "../MyModal";
+import api from "../Api";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { selectUser, userActions } from "../../store/user";
@@ -35,11 +35,7 @@ function Result(): React.ReactElement {
   const handleSaveImg = async () => {
     try {
       setIsLoading(true);
-      const result = await axios.post(
-        process.env.REACT_APP_SERVER_ADRESS + "/img/saveimg",
-        { imgdata: imgSrc },
-        { withCredentials: true }
-      );
+      const result = await api.post("/img/saveimg", { imgdata: imgSrc });
       if (result.status === 200) {
         setIsSaved(true);
       }

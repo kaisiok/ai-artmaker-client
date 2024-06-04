@@ -1,16 +1,13 @@
 import Button from "react-bootstrap/Button";
 import naverLoginImg from "../img/naverLogin.png";
-
-import axios from "axios";
+import api from "./Api";
 
 function NaverLoginButton(): React.ReactElement {
   const handleOauthNaver = async () => {
     try {
-      const result = await axios.get(
-        process.env.REACT_APP_SERVER_ADRESS + "/user/login/oauthnaver"
-      );
+      const result = await api.get("/user/login/oauthnaver");
       if (result.data.authUrl) {
-        window.location.href = result.data.authUrl; // 클라이언트에서 네이버 로그인 페이지로 리디렉션
+        window.location.href = result.data.authUrl;
       }
     } catch (err: any) {
       console.log(err);

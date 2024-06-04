@@ -1,7 +1,7 @@
 import { Button, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
+import api from "../Api";
 
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useState } from "react";
 
 import MyModal from "../MyModal";
@@ -29,9 +29,7 @@ function Signup(): React.ReactElement {
 
   const checkId = async (id: string) => {
     try {
-      const result = await axios.get(
-        process.env.REACT_APP_SERVER_ADRESS + "/user/checkid?id=" + id
-      );
+      const result = await api.get("/user/checkid?id=" + id);
       if (result.status === 200) {
         setIsCheckedId(true);
         setIdCheckMessage("사용가능");
@@ -71,14 +69,10 @@ function Signup(): React.ReactElement {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const result = await axios.post(
-        process.env.REACT_APP_SERVER_ADRESS + "/user/signup",
-        {
-          id: userId,
-          password: userPassward,
-        },
-        { withCredentials: true }
-      );
+      const result = await api.post("/user/signup", {
+        id: userId,
+        password: userPassward,
+      });
       if (result.status === 200) {
         dispatch(modalActions.setHeaderMessage("환영합니다"));
         dispatch(modalActions.setBodyMessage("회원가입이 완료 되었습니다"));

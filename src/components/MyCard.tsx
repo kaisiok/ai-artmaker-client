@@ -1,8 +1,8 @@
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import MyModal from "./MyModal";
+import api from "./Api";
 
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import { useAppDispatch } from "../hooks";
 import { modalActions } from "../store/modal";
@@ -59,11 +59,9 @@ function MyCard({
     if (navigateOption === 9) {
       lodingHandler(true);
       try {
-        const result = await axios.post(
-          process.env.REACT_APP_SERVER_ADRESS + "/img/tagtoimg",
-          { code: option + "/" + code },
-          { withCredentials: true }
-        );
+        const result = await api.post("/img/tagtoimg", {
+          code: option + "/" + code,
+        });
         if (result.status === 200) {
           dispatch(imgActions.change(result.data));
           navigate("/result");

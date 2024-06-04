@@ -1,5 +1,6 @@
 import { Button } from "react-bootstrap";
 import MyModal from "../MyModal";
+import api from "../Api";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -15,15 +16,11 @@ function MyPhotos(): React.ReactElement {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const user = useAppSelector(selectUser);
 
   useEffect(() => {
     const getImg = async () => {
       try {
-        const result = await axios.get(
-          process.env.REACT_APP_SERVER_ADRESS + "/img/loadimg",
-          { withCredentials: true }
-        );
+        const result = await api.get("/img/loadimg");
         if (result.status === 200) {
           setUserImgs(result.data.imgs);
         }
@@ -49,13 +46,9 @@ function MyPhotos(): React.ReactElement {
   ) => {
     console.log(e.currentTarget.value);
     try {
-      const result = await axios.delete(
-        process.env.REACT_APP_SERVER_ADRESS + "/img/deleteimg",
-        {
-          data: { imgid: e.currentTarget.value },
-          withCredentials: true,
-        }
-      );
+      const result = await api.delete("/img/deleteimg", {
+        data: { imgid: e.currentTarget.value },
+      });
       if (result.status === 200) {
         setRefresh(!refresh);
       }
