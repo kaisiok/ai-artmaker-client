@@ -24,6 +24,7 @@ function MyModal(): React.ReactElement {
     const confirmfn = modalState.confirmFn;
     if (confirmfn === "to_home") {
       navigate("/");
+      window.location.reload();
     }
     dispatch(modalActions.close());
   };

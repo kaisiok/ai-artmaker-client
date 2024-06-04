@@ -20,8 +20,10 @@ function MyNavbar(): React.ReactElement {
       if (result.status === 200) {
         dispatch(userActions.logout());
         dispatch(userActions.setUserId(""));
+        dispatch(userActions.setSocialLogin(""));
         dispatch(imgActions.setDefault());
         navigate("/");
+        window.location.reload();
       }
     } catch (err: any) {
       if (err.response && err.response.status === 404) {

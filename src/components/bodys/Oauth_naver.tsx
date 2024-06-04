@@ -17,6 +17,7 @@ function Oauth_naver(): React.ReactElement {
         if (result.status === 200) {
           dispatch(userActions.login());
           dispatch(userActions.setUserId(result.data.username));
+          dispatch(userActions.setSocialLogin("naver"));
           navigate("/");
         }
       } catch (err: any) {

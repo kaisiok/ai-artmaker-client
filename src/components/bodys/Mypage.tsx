@@ -15,7 +15,9 @@ function Mypage(): React.ReactElement {
   const [userPassword, setUserPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [checkNewPW, setCheckNewPW] = useState("");
+  const [deleteConfirm, setDeleteConfirm] = useState("");
   const user = useAppSelector(selectUser);
+  const isSocialLogin = user.socialLogin !== "";
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -42,18 +44,23 @@ function Mypage(): React.ReactElement {
     setCheckNewPW(e.currentTarget.value);
   };
 
+  const handleDeleteConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDeleteConfirm(e.currentTarget.value);
+  };
+
   const handleSubmitDelete = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
     try {
       const result = await api.delete("/user/delete/userinfo", {
-        data: { password: userPassword },
+        data: { password: userPassword, social: user.socialLogin },
       });
       if (result.status === 200) {
         dispatch(modalActions.setHeaderMessage("안녕히 가세요"));
         dispatch(modalActions.setBodyMessage("회원탈퇴가 완료 되었습니다"));
         dispatch(userActions.logout());
+        dispatch(userActions.setSocialLogin(""));
         dispatch(modalActions.setConfirmFn("to_home"));
         dispatch(modalActions.open());
       }
@@ -125,7 +132,7 @@ function Mypage(): React.ReactElement {
         <div className="w-96 h-full bg-white pt-20 lg:px-20 lg:w-1/2 border-x-2 border-solid border-gray-lv3">
           <h3 className="text-center">{user.userId}님 안녕하세요</h3>
           <div className="text-center mb-4">원하시는 작업을 선택해 주세요</div>
-          {whatTodo === "delete" ? (
+          {whatTodo === "delete" && !isSocialLogin ? (
             <Form
               className="flex flex-col mx-2"
               onSubmit={(e) => {
@@ -139,6 +146,22 @@ function Mypage(): React.ReactElement {
                   onChange={handleChangePassword}
                   type="password"
                   placeholder="Password"
+                />
+              </Form.Group>
+            </Form>
+          ) : whatTodo === "delete" && isSocialLogin ? (
+            <Form
+              className="flex flex-col mx-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <Form.Group className="mb-3">
+                <Form.Label>탈퇴하시겠습니까?</Form.Label>
+                <Form.Control
+                  value={deleteConfirm}
+                  onChange={handleDeleteConfirm}
+                  placeholder="회원탈퇴 를 입력해 주세요"
                 />
               </Form.Group>
             </Form>
@@ -214,7 +237,7 @@ function Mypage(): React.ReactElement {
                   style={{ width: "8rem" }}
                   onClick={handleSubmitDelete}
                   variant="primary"
-                  disabled={userPassword === ""}
+                  disabled={userPassword === "" && deleteConfirm !== "회원탈퇴"}
                 >
                   회원 탈퇴
                 </Button>

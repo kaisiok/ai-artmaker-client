@@ -5,11 +5,13 @@ import { RootState } from ".";
 interface UserState {
   isLogin: Boolean;
   userId: string;
+  socialLogin: string;
 }
 
 const initialState: UserState = {
   isLogin: false,
   userId: "",
+  socialLogin: "",
 };
 
 export const userSlice = createSlice({
@@ -24,6 +26,9 @@ export const userSlice = createSlice({
     },
     setUserId: (state, action: PayloadAction<string>) => {
       state.userId = action.payload;
+    },
+    setSocialLogin: (state, action: PayloadAction<string>) => {
+      state.socialLogin = action.payload;
     },
   },
 });
