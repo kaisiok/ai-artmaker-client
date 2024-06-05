@@ -212,14 +212,16 @@ function Mypage(): React.ReactElement {
               >
                 회원 탈퇴
               </Button>
-              <Button
-                className="mx-2"
-                style={{ width: "8rem" }}
-                onClick={handleTodoChangePassword}
-                variant="secondary"
-              >
-                비밀번호 변경
-              </Button>
+              {isSocialLogin ? null : (
+                <Button
+                  className="mx-2"
+                  style={{ width: "8rem" }}
+                  onClick={handleTodoChangePassword}
+                  variant="secondary"
+                >
+                  비밀번호 변경
+                </Button>
+              )}
             </div>
           ) : (
             <div className="flex justify-center">
