@@ -8,31 +8,19 @@ function MyFooter() {
           <a href="/" className="text-gray-400 hover:text-white mx-2">
             Home
           </a>
-          <a href="/about" className="text-gray-400 hover:text-white mx-2">
-            About
+          <a
+            href="https://github.com/kaisiok/ai-artmaker-client"
+            className="text-gray-400 hover:text-white mx-2"
+          >
+            GitHub-client
           </a>
-          <a href="/contact" className="text-gray-400 hover:text-white mx-2">
-            Contact
+          <a
+            href="https://github.com/kaisiok/ai-artmaker-server"
+            className="text-gray-400 hover:text-white mx-2"
+          >
+            GitHub-server
           </a>
         </nav>
-        <div>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white mx-2"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white mx-2"
-          >
-            LinkedIn
-          </a>
-        </div>
       </div>
     </footer>
   );

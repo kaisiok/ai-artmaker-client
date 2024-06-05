@@ -54,7 +54,7 @@ function MyNavbar(): React.ReactElement {
                   to={"/result"}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  LastImg
+                  Last_Img
                 </Link>
               </Nav.Item>
               {user.isLogin ? (
@@ -116,7 +116,7 @@ function MyNavbar(): React.ReactElement {
                   navigate("/result");
                 }}
               >
-                LastImg
+                Last_Img
               </NavDropdown.Item>
               <NavDropdown.Item
                 onClick={() => {
@@ -146,7 +146,7 @@ function MyNavbar(): React.ReactElement {
                   navigate("/result");
                 }}
               >
-                LastImg
+                Last_Img
               </NavDropdown.Item>
               <NavDropdown.Item
                 onClick={() => {
