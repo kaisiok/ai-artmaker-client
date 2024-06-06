@@ -18,6 +18,8 @@ function Oauth_naver(): React.ReactElement {
           dispatch(userActions.login());
           dispatch(userActions.setUserId(result.data.username));
           dispatch(userActions.setSocialLogin("naver"));
+          api.defaults.headers["Authorization"] = `Bearer ${result.data.token}`;
+          localStorage.setItem("authToken", result.data.token);
           navigate("/");
         }
       } catch (err: any) {

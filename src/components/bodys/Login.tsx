@@ -35,6 +35,8 @@ function Login(): React.ReactElement {
       if (result.status === 200) {
         dispatch(userActions.login());
         dispatch(userActions.setUserId(result.data.username));
+        api.defaults.headers["Authorization"] = `Bearer ${result.data.token}`;
+        localStorage.setItem("authToken", result.data.token);
         setUserId("");
         setUserPassward("");
         navigate("/");

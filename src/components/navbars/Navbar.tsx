@@ -18,25 +18,19 @@ function MyNavbar(): React.ReactElement {
     try {
       const result = await api.post("/user/logout", {});
       if (result.status === 200) {
-        dispatch(userActions.logout());
-        dispatch(userActions.setUserId(""));
-        dispatch(userActions.setSocialLogin(""));
-        dispatch(imgActions.setDefault());
-        navigate("/");
-        window.location.reload();
+        console.log("logout succesed");
       }
     } catch (err: any) {
-      if (err.response && err.response.status === 404) {
-        navigate("/404");
-      } else if (err.response && err.response.status === 406) {
-        dispatch(userActions.logout());
-        dispatch(userActions.setUserId(""));
-        navigate("/");
-      } else if (err.response && err.response.status === 500) {
-        navigate("/500");
-      } else {
-        console.log(err);
-      }
+      console.log(err);
+    } finally {
+      dispatch(userActions.logout());
+      dispatch(userActions.setUserId(""));
+      dispatch(userActions.setSocialLogin(""));
+      dispatch(imgActions.setDefault());
+      localStorage.removeItem("authToken");
+      delete api.defaults.headers["Authorization"];
+      navigate("/");
+      window.location.reload();
     }
   };
 
