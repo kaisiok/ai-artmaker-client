@@ -129,7 +129,7 @@ function Mypage(): React.ReactElement {
   return (
     <div className="mt-14 h-[calc(100svh-56px)]">
       <div className="bg-gray-lv2 h-full flex justify-center">
-        <div className="w-96 h-full bg-white pt-20 lg:px-20 lg:w-1/2 border-x-2 border-solid border-gray-lv3">
+        <div className="w-96 h-full bg-white pt-20 lg:px-20 lg:w-1/2 border-x-2 border-solid border-gray-lv3 overflow-auto">
           <h3 className="text-center">{user.userId}님 안녕하세요</h3>
           <div className="text-center mb-4">원하시는 작업을 선택해 주세요</div>
           {whatTodo === "delete" && !isSocialLogin ? (

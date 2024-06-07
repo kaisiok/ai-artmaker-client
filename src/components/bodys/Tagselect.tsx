@@ -131,7 +131,7 @@ function Tagselect(): React.ReactElement {
       {isLoading ? (
         <div className="mt-14 h-[calc(100svh-56px)]">
           <div className="bg-gray-lv2 h-full flex justify-center">
-            <div className="w-96 h-full bg-white pt-8 lg:w-1/2 border-x-2 border-solid border-gray-lv3 ">
+            <div className="w-96 h-full bg-white pt-8 lg:w-1/2 border-x-2 border-solid border-gray-lv3 overflow-auto">
               <div
                 className={
                   "h-custom-h w-custom-w mx-auto rounded overflow-hidden border-1 border-solid border-gray-lv3 flex justify-center items-center"

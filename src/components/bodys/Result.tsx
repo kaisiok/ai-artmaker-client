@@ -67,7 +67,7 @@ function Result(): React.ReactElement {
   return (
     <div className="mt-14 h-[calc(100svh-56px)]">
       <div className="bg-gray-lv2 h-full flex justify-center">
-        <div className="w-96 h-full bg-white pt-8 lg:w-1/2 border-x-2 border-solid border-gray-lv3">
+        <div className="w-96 h-full bg-white pt-8 lg:w-1/2 border-x-2 border-solid border-gray-lv3 overflow-auto">
           {imgSrc === "defaultimg" ? (
             <div className="w-full flex justify-center">
               <div className="w-custom-w h-custom-h my-2 border-dashed border-2 border-gray-600 rounded flex items-center justify-center relative">
@@ -167,7 +167,7 @@ function Result(): React.ReactElement {
               </Button>
             )}
           </div>
-          <div id="button-wrappe1" className="h-10 flex justify-center mt-3">
+          <div id="button-wrappe1" className="h-10 flex justify-center my-3">
             <Button
               className="mx-2"
               style={{ width: "17rem" }}
