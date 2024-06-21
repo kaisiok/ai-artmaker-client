@@ -64,10 +64,24 @@ function Home(): React.ReactElement {
               key={"home_img" + idx}
               className="w-48 h-96 my-2 relative rounded overflow-hidden"
             >
-              <img
-                className="h-full"
-                src={process.env.PUBLIC_URL + "/img/" + el.src}
-              />
+              <picture>
+                <source
+                  className="h-full"
+                  srcSet={
+                    process.env.PUBLIC_URL + "/imgwebp/" + el.src + ".webp"
+                  }
+                  type="image/webp"
+                />
+                <source
+                  className="h-full"
+                  srcSet={process.env.PUBLIC_URL + "/img/" + el.src + ".png"}
+                  type="image/png"
+                />
+                <img
+                  className="h-full"
+                  src={process.env.PUBLIC_URL + "/img/" + el.src}
+                />
+              </picture>
             </div>
           );
         })}
