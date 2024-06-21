@@ -30,7 +30,7 @@ const MydataTs: ISvgObj = Mydata;
 function preloadImages(urls: Array<ImageObject>) {
   urls.forEach((el) => {
     const img = new Image();
-    img.src = el.src;
+    img.src = process.env.PUBLIC_URL + "/img/" + el.src;
   });
 }
 
