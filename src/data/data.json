@@ -34,7 +34,7 @@
       "code": "010",
       "explanation": "뒷모습"
     },
-    { "src": "tag_girl_from side", "code": "011", "explanation": "옆모습" },
+    { "src": "tag_girl_fromside", "code": "011", "explanation": "옆모습" },
     { "src": "tag_girl_sitting", "code": "012", "explanation": "앉아있는" }
   ],
   "guy_pose": [

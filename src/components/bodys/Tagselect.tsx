@@ -54,7 +54,7 @@ function Tagselect_({
 function preloadImages(urls: Array<ImageObject>) {
   urls.forEach((el) => {
     const img = new Image();
-    img.src = process.env.PUBLIC_URL + "/img/" + el.src;
+    img.src = process.env.PUBLIC_URL + "/imgwebp/" + el.src + ".webp";
   });
 }
 
