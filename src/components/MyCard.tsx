@@ -98,10 +98,7 @@ function MyCard({
         placement="top"
         overlay={<Tooltip id="button-tooltip">{explanation}</Tooltip>}
       >
-        <img
-          className="h-full"
-          src={process.env.REACT_APP_SERVER_ADRESS + "/img/" + src}
-        />
+        <img className="h-full" src={process.env.PUBLIC_URL + "/img/" + src} />
       </OverlayTrigger>
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-3">
         <Button
