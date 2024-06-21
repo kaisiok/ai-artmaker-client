@@ -66,7 +66,7 @@ function Home(): React.ReactElement {
             >
               <img
                 className="h-full"
-                src={process.env.REACT_APP_SERVER_ADRESS + "/img/" + el.src}
+                src={process.env.PUBLIC_URL + "/img/" + el.src}
               />
             </div>
           );

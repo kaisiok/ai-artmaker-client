@@ -14,6 +14,10 @@ type Tagprops = {
   lodingHandler: Function;
 };
 
+type ImageObject = {
+  src: string;
+};
+
 interface ISvgObj {
   [key: string]: any;
 }
@@ -47,6 +51,13 @@ function Tagselect_({
   );
 }
 
+function preloadImages(urls: Array<ImageObject>) {
+  urls.forEach((el) => {
+    const img = new Image();
+    img.src = process.env.PUBLIC_URL + "/img/" + el.src;
+  });
+}
+
 function Tagselect(): React.ReactElement {
   const [tagIdx, setTagIdx] = useState(0);
   const [selectedOption, SetSelectedOption] = useState("");
@@ -59,6 +70,20 @@ function Tagselect(): React.ReactElement {
     };
     return closeFn;
   }, []);
+
+  useEffect(() => {
+    if (tagIdx === 0) {
+      preloadImages(MydataTs.target);
+    } else if (tagIdx === 2) {
+      preloadImages(MydataTs.girl_face);
+    } else if (tagIdx === 3) {
+      preloadImages(MydataTs.guy_face);
+    } else if (tagIdx === 7) {
+      preloadImages(MydataTs.time);
+    } else if (tagIdx === 8) {
+      preloadImages(MydataTs.background);
+    }
+  }, [tagIdx]);
 
   const tagComponent = [
     <Tagselect_

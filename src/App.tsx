@@ -1,6 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import Mydata from "./data/data.json";
-import { useEffect } from "react";
 
 import MyNavbar from "./components/navbars/Navbar";
 import MyFooter from "./components/footers/Myfooter";
@@ -19,29 +17,7 @@ import Tagselect from "./components/bodys/Tagselect";
 import Error404 from "./components/bodys/Error404";
 import Error500 from "./components/bodys/Error500";
 
-type ImageObject = {
-  src: string;
-};
-interface ISvgObj {
-  [key: string]: any;
-}
-const MydataTs: ISvgObj = Mydata;
-
-function preloadImages(urls: Array<ImageObject>) {
-  urls.forEach((el) => {
-    const img = new Image();
-    img.src = process.env.PUBLIC_URL + "/img/" + el.src;
-  });
-}
-
 function App() {
-  useEffect(() => {
-    const dataKeys = Object.keys(Mydata);
-    dataKeys.forEach((key) => {
-      preloadImages(MydataTs[key]);
-    });
-  }, []);
-
   return (
     <div className="Ap bg-gray-lv1 font-Main">
       <MyNavbar />
